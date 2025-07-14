@@ -1,8 +1,13 @@
 package tests;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import models.People;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+
+import java.io.File;
+import java.io.IOException;
 
 public class SimpleTests {
     @BeforeEach
@@ -31,5 +36,17 @@ public class SimpleTests {
     public void parameterizedTest(String name, String age, String sex) {
         System.out.println(name + " " + age + " " + sex);
         Assertions.assertTrue(name.contains("s"));
+    }
+
+    @Test
+    public void test() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        File file = new File ("src/test/resources/stas.json");
+        People people = objectMapper.readValue(file, People.class);
+        System.out.println(people.getName());
+
+        People sasha = new People("sasha", 10, "female");
+        String json =objectMapper.writeValueAsString(sasha);
+        System.out.println(json);
     }
 }

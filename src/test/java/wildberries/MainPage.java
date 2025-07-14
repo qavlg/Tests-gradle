@@ -17,10 +17,8 @@ public class MainPage {
         driver.findElement(searchField).click();
         driver.findElement(searchField).sendKeys(input);
         driver.findElement(searchField).sendKeys(Keys.ENTER);
-
-
-
     }
+
 
 
 

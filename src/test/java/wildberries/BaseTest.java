@@ -13,7 +13,7 @@ public class BaseTest {
 
     @BeforeAll
     public static void downloadDriver() {
-        WebDriverManager.chromedriver().setup();
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
     }
 
     @BeforeEach
@@ -27,6 +27,7 @@ public class BaseTest {
     }
 
     @AfterEach
+
     public void tearDown() {
         driver.close();
     }

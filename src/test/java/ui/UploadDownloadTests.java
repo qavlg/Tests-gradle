@@ -40,6 +40,11 @@ public class UploadDownloadTests {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
+    @AfterEach
+    public void tearDown() {
+        driver.close();
+    }
+
     @Test
     public void uploadPic() {
         driver.get("http://85.192.34.140:8081/");
@@ -76,8 +81,4 @@ public class UploadDownloadTests {
         Assertions.assertNotNull(file);
     }
 
-    @AfterEach
-    public void tearDown() {
-        driver.close();
-    }
 }
